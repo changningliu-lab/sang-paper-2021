@@ -1,0 +1,74 @@
+#参数1：classify_lnc_four_class.txt
+#参数2：all_gffcompare_annotated_gtf_remain_oxiu_four_class_high_confident_lnc.gtf
+#输出：four_class_lnc_exons/Arabidopsis_lnc_exons.txt,four_class_lnc_exons/Brassicaceae_lnc_exons.txt,four_class_lnc_exons/Dicotyledon_lnc_exons.txt,four_class_lnc_exons/Angiosperm_lnc_exons.txt,four_class_lnc_exons/Flower_lnc_exons.txt
+
+import re
+import sys
+from collections import defaultdict
+
+lnc_dict = defaultdict(list)
+with open(sys.argv[1]) as file_in1:
+    for line in file_in1:
+        if line[:2] == '##':
+            key = line.strip().split()[1]
+        elif line[0] != '#':
+            lnc_list = line.strip().split(';')[:-1]
+            for lncnames in lnc_list:
+                lncs = lncnames.split('#')[1]
+                lnc_dict[key].append(lncs)
+
+dict_1_new = defaultdict(list)
+dict_2_new = defaultdict(list)
+dict_3_new = defaultdict(list)
+dict_4_new = defaultdict(list)
+dict_5_new = defaultdict(list)
+with open(sys.argv[2], 'r') as gtf:
+    for line in gtf:
+        item = line.split('\t')
+        feature = item[2]
+        if feature == 'exon':
+            transcript_id = re.findall('transcript_id "(\S+?)["$]', item[8])[0]
+            exon_num = re.findall('exon_number "(\S+?)["$]', item[8])[0]
+            if transcript_id in lnc_dict['list_2_1']:
+                dict_1_new[transcript_id].append(exon_num)
+            if transcript_id in lnc_dict['list_4']:
+                dict_2_new[transcript_id].append(exon_num)
+            if transcript_id in lnc_dict['list_18']:
+                dict_3_new[transcript_id].append(exon_num)
+            if transcript_id in lnc_dict['list_25']:
+                dict_4_new[transcript_id].append(exon_num)
+            if transcript_id in lnc_dict['list_24']:
+                dict_5_new[transcript_id].append(exon_num)
+
+file_out1 = open('four_class_lnc_exons/Arabidopsis_lnc_exons.txt', 'w')
+for lncname,exons_list in dict_1_new.items():
+    exon_nums = str(len(exons_list))  
+    file_out1.write('\t'.join([lncname, exon_nums, 'Arabidopsis']) + '\n')
+file_out1.close()
+
+file_out2 = open('four_class_lnc_exons/Brassicaceae_lnc_exons.txt', 'w')
+for lncname,exons_list in dict_2_new.items():
+    exon_nums = str(len(exons_list))
+    file_out2.write('\t'.join([lncname, exon_nums, 'Brassicaceae']) + '\n')
+file_out2.close()
+
+file_out3 = open('four_class_lnc_exons/Dicotyledon_lnc_exons.txt', 'w')
+for lncname,exons_list in dict_3_new.items():
+    exon_nums = str(len(exons_list))
+    file_out3.write('\t'.join([lncname, exon_nums, 'Dicotyledon']) + '\n')
+file_out3.close()
+
+file_out4 = open('four_class_lnc_exons/Angiosperm_lnc_exons.txt', 'w')
+for lncname,exons_list in dict_4_new.items():
+    exon_nums = str(len(exons_list))
+    file_out4.write('\t'.join([lncname, exon_nums, 'Angiosperm']) + '\n')
+file_out4.close()
+
+file_out5 = open('four_class_lnc_exons/Flower_lnc_exons.txt', 'w')
+for lncname,exons_list in dict_5_new.items():
+    exon_nums = str(len(exons_list))
+    file_out5.write('\t'.join([lncname, exon_nums, 'Flower']) + '\n')
+file_out5.close()
+
+file_in1.close()
+gtf.close()
