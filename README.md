@@ -1,1 +1,11 @@
-# sang-paper-2021
+## Data integration and evolutionary analysis of long non-coding RNAs in 25 flowering plants
+
+### Abstract
+**Background**: Long non-coding RNAs (lncRNAs) play vital roles in many important biological processes in plants. Currently, a large fraction of plant lncRNA studies center at lncRNA identification and functional analysis. Only a few plant lncRNA studies focus on understanding their evolutionary history, which is crucial for an in-depth understanding of lncRNAs. Therefore, the integration of large volumes of plant lncRNA data is required to deeply investigate the evolution of lncRNAs.
+
+**Results**: We present a large-scale evolutionary analysis of lncRNAs in 25 flowering plants. In total, we identified 199,796 high-confidence lncRNAs through data integration analysis, and grouped them into 5,497 lncRNA orthologous families. Then, we divided the lncRNAs into groups based on the degree of sequence conservation, and quantified the various characteristics of 756 conserved Arabidopsis thaliana lncRNAs. We found that compared with non-conserved lncRNAs, conserved lncRNAs might have more exons, longer sequence length, higher expression levels, and lower tissue specificities. Functional annotation based on the A. thaliana coding-lncRNA gene co-expression network suggested potential functions of conserved lncRNAs including autophagy, locomotion, and cell cycle. Enrichment analysis revealed that the functions of conserved lncRNAs were closely related to the growth and development of the tissues in which they were specifically expressed.
+
+**Conclusions**: Comprehensive integration of large-scale lncRNA data and construction of a phylogenetic tree with orthologous lncRNA families from 25 flowering plants was used to provide an oversight of the evolutionary history of plant lncRNAs including origin, conservation, and orthologous relationships. Further analysis revealed a differential characteristic profile for conserved lncRNAs in A. thaliana when compared with non-conserved lncRNAs. We also examined tissue specific expression and the potential functional roles of conserved lncRNAs. The results presented here will further our understanding of plant lncRNA evolution, and provide the basis for further in-depth studies of their functions.
+
+### Contact
+Shiye Sang, sangshiye@qq.com
